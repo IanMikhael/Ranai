@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useTheme } from '../context/useTheme';
+import { CONTACT_INFO } from '../constants/content';
 
 export default function Contact() {
+  const { isDark } = useTheme();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,11 +14,10 @@ export default function Contact() {
   // Format pesan otomatis untuk WhatsApp
   const handleSubmit = (e) => {
     e.preventDefault();
-    const whatsappNumber = '62817272794'; // Nomor WhatsApp Anda tanpa + atau 0 di depan
+    const whatsappNumber = '62817272794';
     const text = `Halo Ranaix, saya ingin diskusi.%0A%0A*Nama:* ${formData.name}%0A*Email:* ${formData.email}%0A*Perusahaan:* ${formData.company}%0A%0A*Pesan:* ${formData.message}`;
     const waLink = `https://wa.me/${whatsappNumber}?text=${text}`;
-    
-    // Buka tab baru WhatsApp
+
     window.open(waLink, '_blank');
   };
 
@@ -24,28 +26,46 @@ export default function Contact() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white overflow-hidden font-sans selection:bg-[#00dce5]/30">
+    <div className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
+      isDark
+        ? 'bg-[#050505] text-white'
+        : 'bg-white text-gray-900'
+    }`}>
       
       {/* Background Atmosphere */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#00dce5]/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-[0.02] pointer-events-none z-0"></div>
+      <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] blur-[150px] rounded-full pointer-events-none z-0 ${
+        isDark ? 'bg-[#00dce5]/5' : 'bg-blue-400/5'
+      }`}></div>
+      <div className={`absolute inset-0 bg-[size:5rem_5rem] opacity-[0.02] pointer-events-none z-0 ${
+        isDark
+          ? 'bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)]'
+          : 'bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)]'
+      }`}></div>
 
       {/* ==================== HERO SECTION ==================== */}
       <section className="relative z-10 max-w-7xl mx-auto px-8 pt-48 pb-24 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md text-sm font-medium text-gray-300 mb-8">
+        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md text-sm font-medium mb-8 ${
+          isDark
+            ? 'bg-white/5 border border-white/10 text-gray-300'
+            : 'bg-gray-200 border border-gray-300 text-gray-700'
+        }`}>
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00dce5] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00dce5]"></span>
           </span>
           Get in Touch
         </div>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6">
+        <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6 ${
+          isDark ? 'text-white' : 'text-gray-900'
+        }`}>
           Mari rancang arsitektur<br/>
-          <span className="bg-gradient-to-r from-white via-[#b6c4ff] to-[#00dce5] bg-clip-text text-transparent">
+          <span className={isDark ? 'text-[#00dce5]' : 'text-blue-600'}>
             masa depan Anda.
           </span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+        <p className={`text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light ${
+          isDark ? 'text-gray-400' : 'text-gray-700'
+        }`}>
           Punya proyek besar atau ide yang butuh eksekusi sistem? Tim kami siap membantu mewujudkannya. Diskusikan kebutuhan Anda sekarang.
         </p>
       </section>
@@ -136,28 +156,28 @@ export default function Contact() {
           </div>
 
           <div className="space-y-4 pt-4">
-            <ContactRow 
+            <ContactRow
               icon={<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />}
-              label="Telepon / WA" 
-              value="+62 817-272-794" 
-              href="https://wa.me/62817272794" 
+              label="Telepon / WA"
+              value={CONTACT_INFO.phone}
+              href={`https://wa.me/${CONTACT_INFO.phone.replace(/\D/g, '')}`}
             />
-            <ContactRow 
+            <ContactRow
               icon={<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />}
-              label="Email" 
-              value="hello@ranaix.com" 
-              href="mailto:hello@ranaix.com" 
+              label="Email"
+              value={CONTACT_INFO.email}
+              href={`mailto:${CONTACT_INFO.email}`}
             />
-            <ContactRow 
+            <ContactRow
               icon={
                 <>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </>
               }
-              label="Lokasi Kantor" 
-              value="Jakarta, Indonesia" 
-              href="#" 
+              label="Lokasi Kantor"
+              value={CONTACT_INFO.location}
+              href="#"
             />
           </div>
 
@@ -167,7 +187,7 @@ export default function Contact() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
-            Senin - Jumat, 09.00 - 18.00 WIB
+            {CONTACT_INFO.hours}
           </div>
         </div>
       </section>

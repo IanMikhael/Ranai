@@ -2,15 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-body { 
-  background-color: #080808; 
-  color: #e5e2e1; 
+/* Light Mode (default) */
+body {
+  background-color: #ffffff;
+  color: #1f2937;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.glass-panel { 
-  background: rgba(22, 22, 22, 0.7); 
-  backdrop-filter: blur(20px); 
-  border: 1px solid rgba(255, 255, 255, 0.08); 
+
+/* Dark Mode */
+:root.dark {
+  color-scheme: dark;
 }
-.card-hover:hover { 
-  border-color: rgba(255, 255, 255, 0.2); 
+
+:root.dark body {
+  background-color: #050505;
+  color: #e5e2e1;
+}
+
+.glass-panel {
+  background: rgba(22, 22, 22, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+:root.dark .glass-panel {
+  background: rgba(22, 22, 22, 0.7);
+}
+
+.card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Smooth transitions for theme changes */
+* {
+  @apply transition-colors duration-300;
+}
+
+/* Override for elements that shouldn't transition */
+*:has([data-no-transition]) {
+  @apply transition-none;
 }

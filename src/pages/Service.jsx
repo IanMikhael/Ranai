@@ -1,47 +1,31 @@
 import { useState } from 'react';
+import { useTheme } from '../context/useTheme';
+import { SERVICES_SECTION, USAGE_SECTION, SERVICE_HOW_WE_WORK, FINAL_CTA } from '../constants/content';
 
 export default function Service() {
+  const { isDark } = useTheme();
   const [activeTab, setActiveTab] = useState('monitoring');
 
-  const services = [
-    {
-      title: "Integrasi",
-      desc: "Integrasikan Sistem Bisnis. Menghubungkan platform yang terpisah menjadi satu alur data yang mulus.",
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-      )
-    },
-    {
-      title: "Pengembangan",
-      desc: "Bangun Sistem Sesuai Kebutuhan. Arsitektur custom yang dirancang khusus untuk skala operasional Anda.",
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      )
-    },
-    {
-      title: "Otomatisasi",
-      desc: "Otomatisasi Proses Rutin. Mengurangi intervensi manual dan meningkatkan efisiensi operasional.",
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      )
-    },
-    {
-      title: "Experience",
-      desc: "Teknologi Interaktif. Menghadirkan pengalaman pengguna yang imersif dan modern.",
-      icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.828 2.828" />
-      )
-    }
+  const serviceIcons = [
+    <path key="1" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />,
+    <path key="2" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />,
+    <path key="3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />,
+    <path key="4" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.828 2.828" />
   ];
 
-  const tabs = [
-    { id: 'monitoring', label: 'Pemantauan', title: 'Visibilitas Bisnis', desc: 'Pantau penjualan POS, operasi gudang, dan status toko secara real-time. Kendalikan kecepatan dan ketepatan operasional dari satu titik pusat.' },
-    { id: 'sync', label: 'Sinkronisasi', title: 'Koordinasi Lancar', desc: 'Selaraskan operasi antar divisi, cabang, dan gudang. Singkirkan hambatan komunikasi dan optimalkan efisiensi tim Anda.' },
-    { id: 'analysis', label: 'Analisis', title: 'Berbasis Data', desc: 'Integrasikan data terpisah untuk analisis pasar yang mendalam. Ubah angka menjadi wawasan eksekutif untuk keputusan yang lebih cepat.' }
-  ];
+  const services = SERVICES_SECTION.services.map((service, i) => ({
+    ...service,
+    icon: serviceIcons[i]
+  }));
+
+  const tabs = USAGE_SECTION.tabs;
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white overflow-hidden font-sans selection:bg-[#00dce5]/30">
+    <div className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
+      isDark
+        ? 'bg-[#050505] text-white'
+        : 'bg-white text-gray-900'
+    }`}>
       
       {/* Background Atmosphere */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#00dce5]/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
@@ -49,40 +33,67 @@ export default function Service() {
 
       {/* ==================== HERO SECTION ==================== */}
       <section className="relative z-10 max-w-7xl mx-auto px-8 pt-48 pb-24 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md text-sm font-medium text-gray-300 mb-8">
+        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md text-sm font-medium mb-8 ${
+          isDark
+            ? 'bg-white/5 border border-white/10 text-gray-300'
+            : 'bg-gray-200 border border-gray-300 text-gray-700'
+        }`}>
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00dce5] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00dce5]"></span>
           </span>
-          Our Expertise
+          {SERVICES_SECTION.tag}
         </div>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6">
+        <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6 ${
+          isDark ? 'text-white' : 'text-gray-900'
+        }`}>
           Solusi Teknologi untuk<br/>
-          <span className="bg-gradient-to-r from-white via-[#b6c4ff] to-[#00dce5] bg-clip-text text-transparent">
+          <span className={isDark ? 'text-[#00dce5]' : 'text-blue-600'}>
             Operasional Bisnis.
           </span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+        <p className={`text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light ${
+          isDark ? 'text-gray-400' : 'text-gray-600'
+        }`}>
           Dari integrasi sistem hingga otomatisasi proses, Ranaix menyediakan fondasi digital yang tangguh untuk pertumbuhan bisnis Anda.
         </p>
       </section>
 
       {/* ==================== BENTO GRID SERVICES (4 Pillars) ==================== */}
       <section className="relative z-10 max-w-7xl mx-auto px-8 py-24">
+        <div className="mb-20 max-w-3xl">
+          <span className="text-[#00dce5] text-sm font-semibold mb-4 block tracking-widest uppercase">{SERVICES_SECTION.tag}</span>
+          <h2 className={`text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight ${
+            isDark ? 'text-white' : 'text-gray-900'
+          }`}>
+            {SERVICES_SECTION.heading}
+          </h2>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {services.map((service, i) => (
-            <div 
-              key={service.title} 
-              className={`group relative overflow-hidden rounded-3xl bg-white/[0.02] border border-white/10 p-8 flex flex-col justify-between transition-all duration-500 hover:bg-white/[0.04] hover:border-[#00dce5]/30 hover:-translate-y-2 ${i === 0 ? 'lg:row-span-2 min-h-[400px]' : 'min-h-[200px]'}`}
+            <div
+              key={service.id}
+              className={`group relative overflow-hidden rounded-3xl p-8 flex flex-col justify-between transition-all duration-500 ${
+                isDark
+                  ? 'bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] hover:border-[#00dce5]/30'
+                  : 'bg-gray-50 border border-gray-200 hover:bg-white hover:border-blue-300'
+              } hover:-translate-y-2 ${i === 0 ? 'lg:row-span-2 min-h-[400px]' : 'min-h-[200px]'}`}
             >
-              <div className={`w-12 h-12 flex items-center justify-center bg-white/5 rounded-2xl border border-white/10 mb-6 group-hover:bg-[#00dce5]/10 transition-colors ${i === 0 ? 'lg:w-16 lg:h-16' : ''}`}>
-                <svg className={`text-white group-hover:text-[#00dce5] transition-colors ${i === 0 ? 'w-8 h-8' : 'w-6 h-6'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className={`w-12 h-12 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-[#00dce5]/10 transition-colors ${
+                isDark
+                  ? 'bg-white/5 border border-white/10'
+                  : 'bg-gray-200 border border-gray-300'
+              } ${i === 0 ? 'lg:w-16 lg:h-16' : ''}`}>
+                <svg className={`group-hover:text-[#00dce5] transition-colors ${
+                  isDark ? 'text-white' : 'text-gray-700'
+                } ${i === 0 ? 'w-8 h-8' : 'w-6 h-6'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {service.icon}
                 </svg>
               </div>
               <div>
                 <h3 className={`font-bold mb-2 ${i === 0 ? 'text-3xl' : 'text-xl'}`}>{service.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{service.desc}</p>
+                <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{service.description}</p>
                 <button className="mt-6 text-[#00dce5] text-sm font-medium flex items-center gap-2 group/btn opacity-80 group-hover:opacity-100 transition-opacity">
                   Pelajari Lebih
                   <span className="transition-transform group-hover/btn:translate-x-1">→</span>
@@ -98,9 +109,9 @@ export default function Service() {
       {/* ==================== INTERACTIVE USAGE TABS ==================== */}
       <section className="relative z-10 max-w-7xl mx-auto px-8 py-32">
         <div className="text-center mb-16">
-          <span className="text-[#00dce5] text-sm font-semibold mb-4 block tracking-widest uppercase">Penggunaan Sistem</span>
-          <h2 className="text-4xl md:text-6xl text-white font-bold leading-[1.05] tracking-tight max-w-3xl mx-auto">
-            Aktivitas Lebih Terstruktur,<br/>
+          <span className="text-[#00dce5] text-sm font-semibold mb-4 block tracking-widest uppercase">{USAGE_SECTION.tag}</span>
+          <h2 className={`text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight max-w-3xl mx-auto ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            {USAGE_SECTION.heading.split('.')[0]}<br/>
             <span className="text-gray-600">Keputusan Lebih Cepat.</span>
           </h2>
         </div>
@@ -113,7 +124,9 @@ export default function Service() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`relative px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 ${
-                  activeTab === tab.id ? 'bg-white text-black' : 'text-gray-400 hover:text-white'
+                  activeTab === tab.id
+                    ? isDark ? 'bg-white text-black' : 'bg-gray-900 text-white'
+                    : isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 {tab.label}
@@ -128,15 +141,15 @@ export default function Service() {
             {tabs.map(tab => (
               activeTab === tab.id && (
                 <div key={tab.id} className="animate-fade-in-up space-y-6">
-                  <h3 className="text-4xl md:text-5xl text-white font-bold tracking-tight">
+                  <h3 className={`text-4xl md:text-5xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     {tab.title}
                   </h3>
-                  <p className="text-gray-400 text-lg leading-relaxed">
+                  <p className={`text-lg leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     {tab.desc}
                   </p>
                   <ul className="space-y-4 pt-4">
                     {['Data real-time tanpa delay', 'Akses multi-device & multi-cabang', 'Otomatisasi laporan harian'].map((feat) => (
-                      <li key={feat} className="flex items-center gap-3 text-gray-300">
+                      <li key={feat} className={`flex items-center gap-3 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                         <span className="w-6 h-6 rounded-full bg-[#00dce5]/10 flex items-center justify-center flex-shrink-0">
                           <svg className="w-3 h-3 text-[#00dce5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
                         </span>
@@ -149,8 +162,20 @@ export default function Service() {
             ))}
           </div>
 
-          {/* Dynamic Mockup based on Active Tab */}
+          {/* Real Images from Assets */}
           <div className="relative group">
+            <div className="absolute inset-0 bg-[#00dce5]/10 blur-[80px] rounded-full transition-opacity duration-500 opacity-50"></div>
+            <div className="relative bg-[#0a0a10] border border-white/10 rounded-2xl p-2 shadow-2xl backdrop-blur-xl transition-transform duration-500 group-hover:scale-[1.02] min-h-[400px] flex flex-col justify-center overflow-hidden">
+              <img
+                src={tabs.find(tab => tab.id === activeTab)?.image || '/assets/visibilitas.png'}
+                alt={tabs.find(tab => tab.id === activeTab)?.title}
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            </div>
+          </div>
+
+          {/* Fallback to Mockups if images not available */}
+          <div className="relative group hidden">
             <div className="absolute inset-0 bg-[#00dce5]/10 blur-[80px] rounded-full transition-opacity duration-500 opacity-50"></div>
             <div className="relative bg-[#0a0a10] border border-white/10 rounded-2xl p-8 shadow-2xl backdrop-blur-xl transition-transform duration-500 group-hover:scale-[1.02] min-h-[400px] flex flex-col justify-center">
               
@@ -234,21 +259,17 @@ export default function Service() {
       <section className="relative z-10 max-w-7xl mx-auto px-8 py-32 border-t border-white/[0.05]">
         <div className="mb-20 max-w-3xl">
           <span className="text-[#00dce5] text-sm font-semibold mb-4 block tracking-widest uppercase">Cara Kami Bekerja</span>
-          <h2 className="text-4xl md:text-5xl text-white font-bold leading-[1.05] tracking-tight">
+          <h2 className={`text-4xl md:text-5xl font-bold leading-[1.05] tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
             Eksekusi yang cepat, hasil yang berkelanjutan.
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { num: "01", title: "Diskusi & Audit", desc: "Memahami arsitektur saat ini dan menyusun strategi integrasi terbaik." },
-            { num: "02", title: "Desain & Pengembangan", desc: "Membangun sistem custom dan mengotomatisasi alur kerja Anda." },
-            { num: "03", title: "Deploy & Dukungan", desc: "Peluncuran sistem tanpa hambatan disertai pemantauan 24/7." }
-          ].map(step => (
+          {SERVICE_HOW_WE_WORK.map(step => (
             <div key={step.num} className="relative p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 transition-colors duration-300 group">
               <div className="text-5xl font-bold text-white/10 group-hover:text-[#00dce5]/20 transition-colors duration-300 mb-4">{step.num}</div>
-              <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
+              <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{step.title}</h3>
+              <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{step.description}</p>
             </div>
           ))}
         </div>
@@ -257,7 +278,7 @@ export default function Service() {
       {/* ==================== FINAL CTA ==================== */}
       <section className="relative z-10 py-48 flex flex-col items-center text-center px-8 border-t border-white/[0.05]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00dce5]/5 blur-[120px] rounded-full pointer-events-none"></div>
-        
+
         <h2 className="relative text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] max-w-4xl mb-8">
           Siap mengoptimalkan<br/>
           <span className="bg-gradient-to-r from-white via-[#b6c4ff] to-[#00dce5] bg-clip-text text-transparent">
@@ -267,8 +288,8 @@ export default function Service() {
         <p className="relative text-xl text-gray-400 max-w-xl mb-12 font-light">
           Konsultasikan kebutuhan teknis bisnis Anda bersama tim ahli Ranaix.
         </p>
-        <a href="/contact" className="relative group bg-white text-black px-10 py-5 rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center gap-3 shadow-[0_0_60px_rgba(255,255,255,0.2)]">
-          Diskusikan Sistem Anda
+        <a href={FINAL_CTA.whatsappLink} target="_blank" rel="noopener noreferrer" className="relative group bg-white text-black px-10 py-5 rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center gap-3 shadow-[0_0_60px_rgba(255,255,255,0.2)]">
+          {FINAL_CTA.cta}
           <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>
           </span>

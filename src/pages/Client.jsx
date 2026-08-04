@@ -1,53 +1,16 @@
+import { useTheme } from '../context/useTheme';
+import { CLIENT_STORIES, FINAL_CTA } from '../constants/content';
+
 export default function Client() {
-  const clients = [
-    {
-      name: "MS GLOW AESTHETIC CLINIC",
-      title: "Operasional Lebih Cepat, Akurat, dan Terkontrol",
-      desc: "Ranaix mengintegrasikan sistem registrasi pasien, manajemen inventaris klinik, dan pembayaran ke dalam satu alur kerja yang mulus, menghilangkan proses manual yang rentan kesalahan.",
-      metrics: [
-        { value: "60%", label: "Kecepatan Registrasi" },
-        { value: "80%", label: "Kesalahan Berkurang" },
-        { value: "50%", label: "Kapasitas Meningkat" }
-      ],
-      mockup: "clinic"
-    },
-    {
-      name: "KIDZANIA JAKARTA X MMID",
-      title: "Mengubah 4 Konsol Menjadi 8 Terminal Pemain",
-      desc: "Mendesain ulang arsitektur perangkat keras dan lunak untuk melipatgandakan kapasitas operasional tanpa perlu investasi hardware baru yang masif.",
-      metrics: [
-        { value: "2x", label: "Kapasitas Pemain" },
-        { value: "8", label: "Terminal Aktif" },
-        { value: "0", label: "Hardware Upgrade" }
-      ],
-      mockup: "kidzania"
-    },
-    {
-      name: "RUANG NGAJI",
-      title: "Edukasi Lebih Skalabel dan Efisien",
-      desc: "Membangun sistem administrasi dan platform interaktif yang mampu menangani lonjakan peserta secara real-time, mempermudah pengelolaan kelas dan laporan.",
-      metrics: [
-        { value: "5x", label: "Peserta Meningkat" },
-        { value: "70%", label: "Kemudahan Administrasi" },
-        { value: "100%", label: "Online Adaptation" }
-      ],
-      mockup: "ngaji"
-    },
-    {
-      name: "J99 CORP",
-      title: "Satu Sistem untuk Menyelaraskan Seluruh Tim",
-      desc: "Mengintegrasikan operasional gudang, logistik, dan penjualan menjadi satu dashboard terpusat, memastikan koordinasi antar divisi berjalan tanpa hambatan komunikasi.",
-      metrics: [
-        { value: "50%", label: "Efisiensi Waktu" },
-        { value: "60%", label: "Akurasi Data" },
-        { value: "50%", label: "Operasional Cost" }
-      ],
-      mockup: "j99"
-    }
-  ];
+  const { isDark } = useTheme();
+  const clients = CLIENT_STORIES;
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-white overflow-hidden font-sans selection:bg-[#00dce5]/30">
+    <div className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
+      isDark
+        ? 'bg-[#050505] text-white'
+        : 'bg-white text-gray-900'
+    }`}>
       
       {/* Background Grid & Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#00dce5]/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
@@ -55,20 +18,28 @@ export default function Client() {
 
       {/* Header Section */}
       <section className="relative z-10 max-w-7xl mx-auto px-8 pt-48 pb-24 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md text-sm font-medium text-gray-300 mb-8">
+        <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md text-sm font-medium mb-8 ${
+          isDark
+            ? 'bg-white/5 border border-white/10 text-gray-300'
+            : 'bg-gray-200 border border-gray-300 text-gray-700'
+        }`}>
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00dce5] opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00dce5]"></span>
           </span>
           Client Success Stories
         </div>
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6">
+        <h1 className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6 ${
+          isDark ? 'text-white' : 'text-gray-900'
+        }`}>
           Transformasi Nyata,<br/>
-          <span className="bg-gradient-to-r from-white via-[#b6c4ff] to-[#00dce5] bg-clip-text text-transparent">
+          <span className={isDark ? 'text-[#00dce5]' : 'text-blue-600'}>
             Hasil Terukur.
           </span>
         </h1>
-        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light">
+        <p className={`text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light ${
+          isDark ? 'text-gray-400' : 'text-gray-600'
+        }`}>
           Kami tidak hanya membangun sistem. Kami mengubah cara bisnis beroperasi. Lihat bagaimana Ranaix memberdayakan mitra kami.
         </p>
       </section>
@@ -77,9 +48,9 @@ export default function Client() {
       <section className="relative z-10 max-w-7xl mx-auto px-8 pb-32 space-y-32">
         
         {clients.map((client, index) => (
-          <div key={client.name} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-            
-            {/* Mockup Visual (Bergantian Kiri/Kanan) */}
+          <div key={client.id} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+
+            {/* Client Visual (Bergantian Kiri/Kanan) */}
             <div className={`relative group w-full h-[400px] ${index % 2 !== 0 ? 'lg:order-2' : ''}`}>
               {/* Glow Background */}
               <div className="absolute inset-0 bg-[#00dce5]/10 blur-[80px] rounded-full transition-opacity duration-500 group-hover:opacity-100 opacity-50"></div>
@@ -87,8 +58,10 @@ export default function Client() {
               {/* Frame Mockup */}
               <div className="relative bg-[#0a0a10] border border-white/10 rounded-3xl p-8 h-full shadow-2xl backdrop-blur-xl transition-transform duration-500 group-hover:scale-[1.02] overflow-hidden flex flex-col justify-center">
                 
-                {/* Dummy Abstract UI sesuai konteks */}
-                {client.mockup === 'clinic' && (
+                {/* Show real image if available, otherwise use mockup */}
+                {client.image ? (
+                  <img src={client.image} alt={client.title} className="w-full h-full object-cover rounded-3xl" />
+                ) : client.mockup === 'clinic' && (
                   <div className="space-y-4">
                     <div className="flex justify-between items-center pb-4 border-b border-white/5">
                       <div className="text-xs text-gray-500 font-mono">ms-glow/clinic-dashboard</div>
@@ -182,11 +155,11 @@ export default function Client() {
             {/* Text Content (Bergantian Kanan/Kiri) */}
             <div className={`space-y-6 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
               <span className="text-[#00dce5] text-sm font-semibold block tracking-widest uppercase">{client.name}</span>
-              <h2 className="text-4xl md:text-5xl text-white font-bold leading-[1.1] tracking-tight">
+              <h2 className={`text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {client.title}
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed">
-                {client.desc}
+              <p className={`text-lg leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                {client.description}
               </p>
 
               {/* Metrics Display */}
@@ -201,10 +174,12 @@ export default function Client() {
                 ))}
               </div>
 
-              <button className="group mt-8 text-white font-medium flex items-center gap-2 hover:text-[#00dce5] transition-colors duration-300">
-                Baca Cerita Klien Lengkap
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </button>
+              {client.whatsappLink && (
+                <a href={client.whatsappLink} target="_blank" rel="noopener noreferrer" className="group mt-8 text-white font-medium flex items-center gap-2 hover:text-[#00dce5] transition-colors duration-300">
+                  Baca Cerita Klien Lengkap
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </a>
+              )}
             </div>
 
           </div>
@@ -215,7 +190,7 @@ export default function Client() {
       {/* CTA Bottom */}
       <section className="relative z-10 py-48 flex flex-col items-center text-center px-8 border-t border-white/[0.05]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00dce5]/5 blur-[120px] rounded-full pointer-events-none"></div>
-        
+
         <h2 className="relative text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] max-w-4xl mb-8">
           Ingin menjadi<br/>
           <span className="bg-gradient-to-r from-white via-[#b6c4ff] to-[#00dce5] bg-clip-text text-transparent">
@@ -225,8 +200,8 @@ export default function Client() {
         <p className="relative text-xl text-gray-400 max-w-xl mb-12 font-light">
           Mari diskusikan bagaimana Ranaix dapat mengintegrasikan dan mengoptimalkan sistem operasional bisnis Anda.
         </p>
-        <a href="/contact" className="relative group bg-white text-black px-10 py-5 rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center gap-3 shadow-[0_0_60px_rgba(255,255,255,0.2)]">
-          Diskusikan Sistem Anda
+        <a href={FINAL_CTA.whatsappLink} target="_blank" rel="noopener noreferrer" className="relative group bg-white text-black px-10 py-5 rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center gap-3 shadow-[0_0_60px_rgba(255,255,255,0.2)]">
+          {FINAL_CTA.cta}
           <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>
           </span>
