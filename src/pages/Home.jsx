@@ -226,14 +226,16 @@ export default function Home() {
                 ? 'bg-[#00dce5]/10 group-hover:bg-[#00dce5]/20'
                 : 'bg-[#00dce5]/5 group-hover:bg-[#00dce5]/10'
             }`}></div>
-            <div className="relative z-10 mt-8">
-              <div className={`w-12 h-12 flex items-center justify-center rounded-2xl border mb-4 ${
+            <div className="relative z-10">
+              <div className={`w-12 h-12 flex items-center justify-center rounded-2xl border ${
                 isDark
                   ? 'bg-white/5 border-white/10'
                   : 'bg-blue-100 border-blue-300'
               }`}>
                 <svg className={`w-6 h-6 ${isDark ? 'text-white' : 'text-blue-700'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
               </div>
+            </div>
+            <div>
               <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Integrasi Sistem Bisnis</h3>
               <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Penghubung sistem yang mulus untuk aliran data real-time antar platform tanpa hambatan.</p>
             </div>
