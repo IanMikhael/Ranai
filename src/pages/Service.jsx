@@ -113,7 +113,7 @@ export default function Service() {
                   {service.icon}
                 </svg>
               </div>
-              <div>
+              <div className={i === 0 ? 'mt-12' : ''}>
                 <h3 className={`font-bold mb-2 ${i === 0 ? 'text-3xl' : 'text-xl'}`}>{service.title}</h3>
                 <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{service.description}</p>
                 <button className="mt-6 text-[#00dce5] text-sm font-medium flex items-center gap-2 group/btn opacity-80 group-hover:opacity-100 transition-opacity">
