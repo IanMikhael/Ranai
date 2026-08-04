@@ -226,7 +226,7 @@ export default function Home() {
                 ? 'bg-[#00dce5]/10 group-hover:bg-[#00dce5]/20'
                 : 'bg-[#00dce5]/5 group-hover:bg-[#00dce5]/10'
             }`}></div>
-            <div className="relative z-10">
+            <div className="relative z-10 mt-8">
               <div className={`w-12 h-12 flex items-center justify-center rounded-2xl border mb-4 ${
                 isDark
                   ? 'bg-white/5 border-white/10'
