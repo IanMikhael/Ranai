@@ -450,6 +450,33 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* ==================== FINAL CTA ==================== */}
+      <section className="relative z-10 py-48 flex flex-col items-center text-center px-8">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00dce5]/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <h2 className={`relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] max-w-5xl mb-8 ${
+          isDark
+            ? 'drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]'
+            : 'text-gray-900'
+        }`}>
+          Bangun Sistem yang Mendukung<br/>
+          <span className={isDark ? 'text-[#00dce5]' : 'text-blue-600'}>
+            Pertumbuhan Bisnis.
+          </span>
+        </h2>
+        <p className={`relative text-xl max-w-xl mb-12 font-light ${
+          isDark ? 'text-gray-400' : 'text-gray-600'
+        }`}>
+          {FINAL_CTA.description}
+        </p>
+        <a href={FINAL_CTA.whatsappLink} target="_blank" rel="noopener noreferrer" className="relative group bg-white text-black px-10 py-5 rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center gap-3 shadow-[0_0_60px_rgba(255,255,255,0.2)]">
+          {FINAL_CTA.cta}
+          <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>
+          </span>
+        </a>
+      </section>
     </div>
   );
 }
