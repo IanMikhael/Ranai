@@ -137,8 +137,15 @@ export default function Home() {
             {HERO.tag}
           </div>
 
-          <h1 className="text-6xl md:text-8xl lg:text-[8.5rem] font-bold tracking-tighter leading-[0.9]">
-            {HERO.title}
+          <h1 className={`text-6xl md:text-8xl lg:text-[8.5rem] font-bold tracking-tighter leading-[0.9] ${
+            isDark
+              ? 'drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]'
+              : 'text-gray-900'
+          }`}>
+            Bangun Sistem Informasi<br/>
+            <span className={isDark ? 'text-[#00dce5]' : 'text-blue-600'}>
+              Operasional yang Lebih Produktif.
+            </span>
           </h1>
 
           <p className={`text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light ${
@@ -163,18 +170,6 @@ export default function Home() {
               Lihat Solusi Kami
             </button>
           </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className={`absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-xs tracking-widest ${
-          isDark ? 'text-gray-500' : 'text-gray-400'
-        }`}>
-          SCROLL
-          <div className={`w-[1px] h-12 animate-pulse ${
-            isDark
-              ? 'bg-gradient-to-b from-white/50 to-transparent'
-              : 'bg-gradient-to-b from-gray-400/50 to-transparent'
-          }`}></div>
         </div>
       </section>
 
@@ -455,25 +450,6 @@ export default function Home() {
           </a>
         </div>
       </section>
-
-      {/* ==================== FINAL CTA ==================== */}
-      <section className="relative z-10 py-48 flex flex-col items-center text-center px-8">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00dce5]/5 blur-[120px] rounded-full pointer-events-none"></div>
-
-        <h2 className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.9] max-w-5xl mb-8">
-          {FINAL_CTA.heading}
-        </h2>
-        <p className="relative text-xl text-gray-400 max-w-xl mb-12 font-light">
-          {FINAL_CTA.description}
-        </p>
-        <a href={FINAL_CTA.whatsappLink} target="_blank" rel="noopener noreferrer" className="relative group bg-white text-black px-10 py-5 rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300 flex items-center gap-3 shadow-[0_0_60px_rgba(255,255,255,0.2)]">
-          {FINAL_CTA.cta}
-          <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center transition-transform duration-300 group-hover:rotate-45">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path></svg>
-          </span>
-        </a>
-      </section>
-
     </div>
   );
 }
