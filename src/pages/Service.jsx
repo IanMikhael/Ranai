@@ -92,7 +92,7 @@ export default function Service() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[280px]">
           {services.map((service, i) => (
             <div
               key={service.id}
@@ -100,29 +100,27 @@ export default function Service() {
                 isDark
                   ? 'bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] hover:border-[#00dce5]/30'
                   : 'bg-gray-50 border border-gray-200 hover:bg-white hover:border-blue-300'
-              } hover:-translate-y-2 ${i === 0 ? 'lg:row-span-2 min-h-[400px]' : 'min-h-[200px]'}`}
+              } hover:-translate-y-2`}
             >
               <div className={`w-12 h-12 flex items-center justify-center rounded-2xl mb-6 group-hover:bg-[#00dce5]/10 transition-colors ${
                 isDark
                   ? 'bg-white/5 border border-white/10'
                   : 'bg-gray-200 border border-gray-300'
-              } ${i === 0 ? 'lg:w-16 lg:h-16' : ''}`}>
+              }`}>
                 <svg className={`group-hover:text-[#00dce5] transition-colors ${
                   isDark ? 'text-white' : 'text-gray-700'
                 } ${i === 0 ? 'w-8 h-8' : 'w-6 h-6'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {service.icon}
                 </svg>
               </div>
-              <div className={i === 0 ? 'mt-12' : ''}>
-                <h3 className={`font-bold mb-2 ${i === 0 ? 'text-3xl' : 'text-xl'}`}>{service.title}</h3>
+              <div>
+                <h3 className={`font-bold mb-2 text-xl`}>{service.title}</h3>
                 <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{service.description}</p>
                 <button className="mt-6 text-[#00dce5] text-sm font-medium flex items-center gap-2 group/btn opacity-80 group-hover:opacity-100 transition-opacity">
                   Pelajari Lebih
                   <span className="transition-transform group-hover/btn:translate-x-1">→</span>
                 </button>
               </div>
-              {/* Glow accent for large card */}
-              {i === 0 && <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#00dce5]/5 blur-[80px] rounded-full pointer-events-none"></div>}
             </div>
           ))}
         </div>
