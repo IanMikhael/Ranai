@@ -214,9 +214,11 @@ export default function Client() {
       <section className="relative z-10 py-48 flex flex-col items-center text-center px-8 border-t border-white/[0.05]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00dce5]/5 blur-[120px] rounded-full pointer-events-none"></div>
 
-        <h2 className="relative text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] max-w-4xl mb-8">
+        <h2 className={`relative text-5xl md:text-7xl font-bold tracking-tighter leading-[0.9] max-w-4xl mb-8 ${
+          isDark ? 'text-white' : 'text-gray-900'
+        }`}>
           Ingin menjadi<br/>
-          <span className="bg-gradient-to-r from-white via-[#b6c4ff] to-[#00dce5] bg-clip-text text-transparent">
+          <span className={isDark ? 'text-[#00dce5]' : 'text-blue-600'}>
             cerita sukses berikutnya?
           </span>
         </h2>
