@@ -53,9 +53,13 @@ export default function Footer() {
         
         {/* Top Section: Massive CTA & Premium Newsletter */}
         <div className="flex flex-col items-center text-center mb-32">
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6 max-w-4xl drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]">
+          <h2 className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6 max-w-4xl ${
+            isDark
+              ? 'drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]'
+              : 'text-gray-900'
+          }`}>
             Bangun Sistem yang Mendukung<br/>
-            <span className="bg-gradient-to-r from-white via-[#b6c4ff] to-[#00dce5] bg-clip-text text-transparent">
+            <span className={isDark ? 'text-[#00dce5]' : 'text-blue-600'}>
               Pertumbuhan Bisnis.
             </span>
           </h2>

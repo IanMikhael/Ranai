@@ -1,15 +1,23 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTheme } from '../context/useTheme';
 import { CONTACT_INFO } from '../constants/content';
 
 export default function Contact() {
   const { isDark } = useTheme();
+  const contactRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     message: ''
   });
+
+  const handleMouseMove = (e) => {
+    if (!contactRef.current) return;
+    const rect = contactRef.current.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
 
   // Format pesan otomatis untuk WhatsApp
   const handleSubmit = (e) => {
@@ -26,11 +34,15 @@ export default function Contact() {
   };
 
   return (
-    <div className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
-      isDark
-        ? 'bg-[#050505] text-white'
-        : 'bg-white text-gray-900'
-    }`}>
+    <div
+      ref={contactRef}
+      onMouseMove={handleMouseMove}
+      className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
+        isDark
+          ? 'bg-[#050505] text-white'
+          : 'bg-white text-gray-900'
+      }`}
+    >
       
       {/* Background Atmosphere */}
       <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] blur-[150px] rounded-full pointer-events-none z-0 ${
@@ -41,6 +53,16 @@ export default function Contact() {
           ? 'bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)]'
           : 'bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)]'
       }`}></div>
+
+      {/* Interactive Spotlight (Dark mode only) */}
+      {isDark && (
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-0"
+          style={{
+            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 220, 229, 0.08), transparent 80%)`
+          }}
+        ></div>
+      )}
 
       {/* ==================== HERO SECTION ==================== */}
       <section className="relative z-10 max-w-7xl mx-auto px-8 pt-48 pb-24 text-center">

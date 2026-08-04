@@ -1,10 +1,18 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useTheme } from '../context/useTheme';
 import { SERVICES_SECTION, USAGE_SECTION, SERVICE_HOW_WE_WORK, FINAL_CTA } from '../constants/content';
 
 export default function Service() {
   const { isDark } = useTheme();
   const [activeTab, setActiveTab] = useState('monitoring');
+  const serviceRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    if (!serviceRef.current) return;
+    const rect = serviceRef.current.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
 
   const serviceIcons = [
     <path key="1" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />,
@@ -21,15 +29,29 @@ export default function Service() {
   const tabs = USAGE_SECTION.tabs;
 
   return (
-    <div className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
-      isDark
-        ? 'bg-[#050505] text-white'
-        : 'bg-white text-gray-900'
-    }`}>
+    <div
+      ref={serviceRef}
+      onMouseMove={handleMouseMove}
+      className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
+        isDark
+          ? 'bg-[#050505] text-white'
+          : 'bg-white text-gray-900'
+      }`}
+    >
       
       {/* Background Atmosphere */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#00dce5]/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-[0.02] pointer-events-none z-0"></div>
+
+      {/* Interactive Spotlight (Dark mode only) */}
+      {isDark && (
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-0"
+          style={{
+            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 220, 229, 0.08), transparent 80%)`
+          }}
+        ></div>
+      )}
 
       {/* ==================== HERO SECTION ==================== */}
       <section className="relative z-10 max-w-7xl mx-auto px-8 pt-48 pb-24 text-center">

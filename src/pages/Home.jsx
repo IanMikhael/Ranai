@@ -1,10 +1,19 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../context/useTheme';
 import { HERO, CLIENTS_SECTION, FINAL_CTA } from '../constants/content';
 
 export default function Home() {
   const { isDark } = useTheme();
   const canvasRef = useRef(null);
+  const homeRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Spotlight mouse tracking
+  const handleMouseMove = (e) => {
+    if (!homeRef.current) return;
+    const rect = homeRef.current.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
 
   // Animasi Background: Constellation / Network Nodes
   useEffect(() => {
@@ -80,11 +89,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
-      isDark
-        ? 'bg-[#050505] text-white'
-        : 'bg-white text-gray-900'
-    }`}>
+    <div
+      ref={homeRef}
+      onMouseMove={handleMouseMove}
+      className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
+        isDark
+          ? 'bg-[#050505] text-white'
+          : 'bg-white text-gray-900'
+      }`}
+    >
       
       {/* Background Canvas & Atmosphere */}
       <canvas ref={canvasRef} className={`fixed top-0 left-0 w-full h-full z-0 ${isDark ? 'opacity-40' : 'opacity-0'}`} />
@@ -98,6 +111,16 @@ export default function Home() {
           ? 'bg-[#00dce5]/10'
           : 'bg-blue-400/5'
       }`}></div>
+
+      {/* Interactive Spotlight (Dark mode only) */}
+      {isDark && (
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-0"
+          style={{
+            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 220, 229, 0.08), transparent 80%)`
+          }}
+        ></div>
+      )}
 
       {/* ==================== HERO SECTION ==================== */}
       <section className="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-6 pt-32 pb-24">

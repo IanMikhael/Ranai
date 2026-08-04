@@ -1,20 +1,43 @@
+import { useRef, useState } from 'react';
 import { useTheme } from '../context/useTheme';
 import { CLIENT_STORIES, FINAL_CTA } from '../constants/content';
 
 export default function Client() {
   const { isDark } = useTheme();
   const clients = CLIENT_STORIES;
+  const clientRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    if (!clientRef.current) return;
+    const rect = clientRef.current.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
 
   return (
-    <div className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
-      isDark
-        ? 'bg-[#050505] text-white'
-        : 'bg-white text-gray-900'
-    }`}>
+    <div
+      ref={clientRef}
+      onMouseMove={handleMouseMove}
+      className={`relative min-h-screen overflow-hidden font-sans selection:bg-[#00dce5]/30 ${
+        isDark
+          ? 'bg-[#050505] text-white'
+          : 'bg-white text-gray-900'
+      }`}
+    >
       
       {/* Background Grid & Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-[#00dce5]/5 blur-[150px] rounded-full pointer-events-none z-0"></div>
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a1a_1px,transparent_1px),linear-gradient(to_bottom,#1a1a1a_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-[0.02] pointer-events-none z-0"></div>
+
+      {/* Interactive Spotlight (Dark mode only) */}
+      {isDark && (
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 z-0"
+          style={{
+            background: `radial-gradient(400px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 220, 229, 0.08), transparent 80%)`
+          }}
+        ></div>
+      )}
 
       {/* Header Section */}
       <section className="relative z-10 max-w-7xl mx-auto px-8 pt-48 pb-24 text-center">
