@@ -30,11 +30,9 @@ export default function Navbar() {
         {/* Logo */}
         <a href="/" className="flex items-center gap-2.5 group">
           <img
-            src="/ranaix-logo.png"
+            src={isDark ? '/logo-white.png' : '/logo-black.png'}
             alt="Ranaix Logo"
-            className={`h-14 w-auto transition-opacity duration-300 group-hover:opacity-80 ${
-              isDark ? 'brightness-125 drop-shadow-lg' : 'brightness-100'
-            }`}
+            className="h-14 w-auto transition-opacity duration-300 group-hover:opacity-80"
           />
         </a>
 
