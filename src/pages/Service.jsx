@@ -107,9 +107,9 @@ export default function Service() {
                   ? 'bg-white/5 border border-white/10'
                   : 'bg-gray-200 border border-gray-300'
               }`}>
-                <svg className={`group-hover:text-[#00dce5] transition-colors ${
+                <svg className={`w-6 h-6 group-hover:text-[#00dce5] transition-colors ${
                   isDark ? 'text-white' : 'text-gray-700'
-                } ${i === 0 ? 'w-8 h-8' : 'w-6 h-6'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {service.icon}
                 </svg>
               </div>
