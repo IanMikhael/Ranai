@@ -32,8 +32,8 @@ export default function Navbar() {
           <img
             src="/ranaix-logo.png"
             alt="Ranaix Logo"
-            className={`h-10 w-auto transition-opacity duration-300 group-hover:opacity-80 ${
-              isDark ? 'brightness-150' : 'brightness-100'
+            className={`h-14 w-auto transition-opacity duration-300 group-hover:opacity-80 ${
+              isDark ? 'brightness-125 drop-shadow-lg' : 'brightness-100'
             }`}
           />
         </a>
