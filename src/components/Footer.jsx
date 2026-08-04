@@ -51,52 +51,7 @@ export default function Footer() {
 
       <div className="relative max-w-7xl mx-auto px-8 pt-32 pb-12 z-10">
         
-        {/* Top Section: Massive CTA & Premium Newsletter */}
-        <div className="flex flex-col items-center text-center mb-32">
-          <h2 className={`text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.9] mb-6 max-w-4xl ${
-            isDark
-              ? 'drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]'
-              : 'text-gray-900'
-          }`}>
-            Bangun Sistem yang Mendukung<br/>
-            <span className={isDark ? 'text-[#00dce5]' : 'text-blue-600'}>
-              Pertumbuhan Bisnis.
-            </span>
-          </h2>
-          <p className={`text-lg max-w-xl mb-12 font-light ${
-            isDark ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-             Dapatkan insight terbaru tentang arsitektur sistem dan integrasi data langsung ke inbox Anda.
-          </p>
 
-          {/* Premium Input dengan Animated Glowing Border */}
-          <div className="w-full max-w-md p-[1px] rounded-full bg-gradient-to-r from-transparent via-[#00dce5]/30 to-transparent transition-all duration-500 hover:via-[#00dce5]/60 focus-within:via-[#00dce5] focus-within:shadow-[0_0_40px_rgba(0,220,229,0.2)]">
-            <form className={`flex flex-col sm:flex-row gap-2 p-1.5 rounded-full backdrop-blur-md ${
-              isDark ? 'bg-[#0a0a0a]' : 'bg-white'
-            }`}>
-              <input
-                type="email"
-                placeholder="Masukkan email bisnis Anda"
-                className={`flex-1 bg-transparent outline-none px-6 py-3 text-sm transition-colors ${
-                  isDark
-                    ? 'text-white placeholder:text-gray-600'
-                    : 'text-gray-900 placeholder:text-gray-400'
-                }`}
-              />
-              <button
-                type="submit"
-                className={`group px-6 py-3 rounded-full font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 whitespace-nowrap ${
-                  isDark
-                    ? 'bg-white text-black hover:bg-gray-200 shadow-[0_0_20px_rgba(255,255,255,0.1)]'
-                    : 'bg-gray-900 text-white hover:bg-gray-700 shadow-[0_0_20px_rgba(0,0,0,0.1)]'
-                }`}
-              >
-                Berlangganan
-                <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </button>
-            </form>
-          </div>
-        </div>
 
         {/* Middle Section: Links Grid (Minimalist) */}
         <div className={`grid grid-cols-2 md:grid-cols-4 gap-12 py-16 border-t ${

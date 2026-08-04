@@ -173,24 +173,40 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ==================== TRUSTED BY (Klien) ==================== */}
-      <section className={`relative z-10 py-20 ${
+{/* ==================== TRUSTED BY (Klien) ==================== */}
+      <section className={`relative z-10 py-24 ${
         isDark
           ? 'bg-[#050505] border-y border-white/5'
-          : 'bg-white border-y border-gray-200'
+          : 'bg-white border-y border-gray-100'
       }`}>
         <div className="max-w-7xl mx-auto px-8">
-          <p className={`text-base font-semibold tracking-widest uppercase mb-12 ${
-            isDark ? 'text-gray-500' : 'text-gray-600'
+          <p className={`text-sm font-semibold tracking-widest uppercase text-center mb-12 ${
+            isDark ? 'text-gray-500' : 'text-gray-400'
           }`}>{CLIENTS_SECTION.heading}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {CLIENTS_SECTION.logos.map((logo) => (
-              <div key={logo.name} className={`group relative overflow-hidden rounded-2xl p-8 flex items-center justify-center min-h-[180px] transition-all duration-300 ${
+              <div key={logo.name} className={`group relative overflow-hidden rounded-2xl p-6 md:p-8 flex items-center justify-center min-h-[160px] md:min-h-[220px] transition-all duration-500 ${
                 isDark
-                  ? 'bg-white/40 border border-white/50 hover:border-white/60 hover:bg-white/50'
-                  : 'bg-gray-50 border border-gray-200 hover:border-gray-300 hover:bg-white'
+                  ? 'bg-white/[0.04] border border-white/10 hover:bg-white/[0.08] hover:border-white/30'
+                  : 'bg-gray-50 border border-gray-100 hover:bg-white hover:border-gray-300 hover:shadow-xl hover:shadow-gray-200/50'
               }`}>
-                <img src={logo.image} alt={logo.name} className="h-16 object-contain" />
+                
+                {/* Efek pendaran putih (Glow) di belakang logo khusus Dark Mode agar logo gelap tetap terlihat */}
+                {isDark && (
+                  <div className="absolute inset-0 bg-white/10 blur-2xl group-hover:bg-white/20 transition-all duration-500"></div>
+                )}
+                
+                {/* Ukuran logo diperbesar (h-20/h-28), opacity dinaikkan, grayscale dihapus */}
+                <img 
+                  src={logo.image} 
+                  alt={logo.name} 
+                  className={`relative z-10 w-full h-20 md:h-28 object-contain transition-all duration-500 ${
+                    isDark 
+                      ? 'opacity-90 drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] group-hover:opacity-100 group-hover:scale-110' 
+                      : 'opacity-90 group-hover:opacity-100 group-hover:scale-110'
+                  }`} 
+                />
               </div>
             ))}
           </div>

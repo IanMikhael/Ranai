@@ -38,7 +38,7 @@ export default function Navbar() {
 
         {/* Desktop Menu (Pill Transparan) */}
         <div className="hidden md:flex gap-1 items-center bg-white/[0.03] border border-white/[0.08] rounded-full px-2 py-1 backdrop-blur-md">
-          <NavLink href="/" label="Home" />
+          <NavLink href="/" label="Beranda" />
           <NavLink href="/service" label="Layanan" />
           <NavLink href="/client" label="Klien" />
           <NavLink href="/contact" label="Kontak" />
@@ -109,10 +109,10 @@ export default function Navbar() {
       >
         {/* Typografi raksasa untuk mobile */}
         <div className={`flex flex-col items-center gap-6 transition-all duration-700 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <a href="/" className={`text-5xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-500 hover:text-white' : 'text-gray-400 hover:text-gray-900'}`} onClick={() => setIsMenuOpen(false)}>Home</a>
-          <a href="/service" className={`text-5xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-500 hover:text-white' : 'text-gray-400 hover:text-gray-900'}`} onClick={() => setIsMenuOpen(false)}>Layanan</a>
-          <a href="/client" className={`text-5xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-500 hover:text-white' : 'text-gray-400 hover:text-gray-900'}`} onClick={() => setIsMenuOpen(false)}>Klien</a>
-          <a href="/contact" className={`text-5xl font-bold transition-colors duration-300 ${isDark ? 'text-gray-500 hover:text-white' : 'text-gray-400 hover:text-gray-900'}`} onClick={() => setIsMenuOpen(false)}>Kontak</a>
+          <a href="/" className={`text-5xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'}`} onClick={() => setIsMenuOpen(false)}>Beranda</a>
+          <a href="/service" className={`text-5xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'}`} onClick={() => setIsMenuOpen(false)}>Layanan</a>
+          <a href="/client" className={`text-5xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'}`} onClick={() => setIsMenuOpen(false)}>Klien</a>
+          <a href="/contact" className={`text-5xl font-bold transition-colors duration-300 ${isDark ? 'text-white hover:text-gray-300' : 'text-gray-900 hover:text-gray-600'}`} onClick={() => setIsMenuOpen(false)}>Kontak</a>
         </div>
         
         <button className="mt-12 bg-white text-black px-8 py-4 rounded-full font-medium text-lg flex items-center gap-2 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
@@ -132,14 +132,14 @@ function NavLink({ href, label }) {
       href={href}
       className={`relative px-4 py-1.5 text-sm ${
         isDark
-          ? 'text-gray-400 hover:text-white'
-          : 'text-gray-600 hover:text-gray-900'
+          ? 'text-white hover:text-gray-300' 
+          : 'text-gray-900 hover:text-gray-600'
       } transition-colors duration-300 group overflow-hidden`}
     >
       <span className="relative z-10">{label}</span>
       <span className={`absolute inset-0 rounded-full translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out ${
         isDark
-          ? 'bg-white/[0.08]'
+          ? 'bg-white/[0.15]'
           : 'bg-gray-900/[0.08]'
       }`}></span>
     </a>
