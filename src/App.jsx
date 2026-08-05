@@ -4,6 +4,7 @@ import { useTheme } from './context/useTheme';
 // Import Komponen Global
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 // Import Halaman
 import Home from './pages/Home';
@@ -34,6 +35,9 @@ function App() {
 
         {/* Footer akan selalu muncul di bawah di semua halaman */}
         <Footer />
+
+        {/* Floating WhatsApp Button */}
+        <FloatingWhatsApp />
       </div>
     </Router>
   );
