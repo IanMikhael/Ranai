@@ -20,11 +20,11 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 md:px-8 py-3 mx-auto mt-4 max-w-5xl rounded-full transition-all duration-500 border ${
           isDark
             ? isScrolled
-              ? 'bg-black/60 backdrop-blur-2xl border-white/10 shadow-[0px_10px_40px_rgba(0,0,0,0.8)]'
-              : 'bg-black/20 border-white/[0.05] backdrop-blur-xl'
+              ? 'bg-black/80 backdrop-blur-2xl border-white/20 shadow-[0_10px_40px_rgba(0,0,0,0.8)]'
+              : 'bg-[#050505]/60 border-white/10 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.6)]'
             : isScrolled
-              ? 'bg-white/80 backdrop-blur-2xl border-gray-200 shadow-[0px_10px_40px_rgba(0,0,0,0.1)]'
-              : 'bg-white/40 border-gray-200/50 backdrop-blur-xl'
+              ? 'bg-white/95 backdrop-blur-2xl border-gray-200 shadow-[0_10px_40px_rgba(0,0,0,0.12)]'
+              : 'bg-white/80 border-gray-200/80 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.06)]'
         }`}
       >
         {/* Logo */}
