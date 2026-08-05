@@ -101,11 +101,18 @@ export default function Footer() {
 
         {/* Bottom Section: Copyright, Status & Socials */}
         <div className="pt-8 border-t border-white/[0.05] flex flex-col md:flex-row justify-between items-center gap-6">
-          
-          <div className="flex items-center gap-6">
+
+          <div className="flex flex-col gap-2">
             <p className={`text-xs font-light ${isDark ? 'text-gray-600' : 'text-gray-500'}`}>
               © 2026 PT Biometrika Teknologi Indonesia.
             </p>
+            <div className={`text-xs font-light space-y-0.5 ${isDark ? 'text-gray-700' : 'text-gray-400'}`}>
+              <p>PT Biometrika Teknologi Indonesia</p>
+              <p>Kebagusan, Jakarta Selatan</p>
+              <p>Indonesia</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-6">
             <div className={`hidden md:flex items-center gap-2 text-xs px-3 py-1.5 rounded-full backdrop-blur-md ${
               isDark
                 ? 'text-gray-500 bg-white/[0.02] border border-white/5'

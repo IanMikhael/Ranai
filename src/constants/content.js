@@ -45,7 +45,7 @@ export const CLIENT_STORIES = [
       { value: '80%', label: 'Kesalahan Berkurang' },
       { value: '50%', label: 'Kapasitas Meningkat' }
     ],
-    mockup: 'clinic'
+    image: '/assets/ms-glow.png'
   },
   {
     id: 'ngaji',
@@ -57,7 +57,7 @@ export const CLIENT_STORIES = [
       { value: '70%', label: 'Kemudahan Administrasi' },
       { value: '100%', label: 'Online Adaptation' }
     ],
-    mockup: 'ngaji'
+    image: '/assets/ruang-ngaji.png'
   },
   {
     id: 'j99',
@@ -69,7 +69,7 @@ export const CLIENT_STORIES = [
       { value: '60%', label: 'Akurasi Data' },
       { value: '50%', label: 'Operasional Cost' }
     ],
-    mockup: 'j99'
+    image: '/assets/j99.png'
   }
 ];
 

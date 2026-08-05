@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../context/useTheme';
+import { useCountUp } from '../hooks/useCountUp';
 import { HERO, CLIENTS_SECTION, FINAL_CTA } from '../constants/content';
 
 export default function Home() {
@@ -417,48 +418,7 @@ export default function Home() {
           </h2>
         </div>
 
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 text-center py-16 ${
-          isDark
-            ? 'border-t border-b border-white/10'
-            : 'border-t border-b border-gray-200'
-        }`}>
-          <div className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
-            isDark
-              ? 'hover:bg-white/[0.02]'
-              : 'hover:bg-gray-100'
-          }`}>
-            <div className={`text-6xl md:text-7xl font-bold tracking-tighter ${
-              isDark
-                ? 'text-white'
-                : 'text-gray-900'
-            }`}>60%</div>
-            <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Kecepatan Registrasi (MS Glow)</p>
-          </div>
-          <div className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
-            isDark
-              ? 'hover:bg-white/[0.02] md:border-x md:border-white/10'
-              : 'hover:bg-gray-100 md:border-x md:border-gray-200'
-          }`}>
-            <div className={`text-6xl md:text-7xl font-bold tracking-tighter ${
-              isDark
-                ? 'text-white'
-                : 'text-gray-900'
-            }`}>2x</div>
-            <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Kapasitas Pemain (Kidzania)</p>
-          </div>
-          <div className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
-            isDark
-              ? 'hover:bg-white/[0.02]'
-              : 'hover:bg-gray-100'
-          }`}>
-            <div className={`text-6xl md:text-7xl font-bold tracking-tighter ${
-              isDark
-                ? 'text-white'
-                : 'text-gray-900'
-            }`}>5x</div>
-            <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Peningkatan Peserta (Ruang Ngaji)</p>
-          </div>
-        </div>
+        <MetricCounter isDark={isDark} />
         <div className="text-center mt-12">
           <a href="/client" className="group text-white font-medium flex items-center gap-2 justify-center hover:text-[#00dce5] transition-colors duration-300">
             Lihat Semua Client Story
@@ -493,6 +453,67 @@ export default function Home() {
           </span>
         </a>
       </section>
+    </div>
+  );
+}
+
+// Animated Metric Counter Component
+function MetricCounter({ isDark }) {
+  const metric1 = useCountUp(60, 2000, '%');
+  const metric2 = useCountUp(2, 2000, 'x');
+  const metric3 = useCountUp(5, 2000, 'x');
+
+  return (
+    <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 text-center py-16 ${
+      isDark
+        ? 'border-t border-b border-white/10'
+        : 'border-t border-b border-gray-200'
+    }`}>
+      <div
+        ref={metric1.elementRef}
+        className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
+          isDark
+            ? 'hover:bg-white/[0.02]'
+            : 'hover:bg-gray-100'
+        }`}
+      >
+        <div className={`text-6xl md:text-7xl font-bold tracking-tighter ${
+          isDark
+            ? 'text-white'
+            : 'text-gray-900'
+        }`}>{metric1.displayValue}</div>
+        <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Kecepatan Registrasi (MS Glow)</p>
+      </div>
+      <div
+        ref={metric2.elementRef}
+        className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
+          isDark
+            ? 'hover:bg-white/[0.02] md:border-x md:border-white/10'
+            : 'hover:bg-gray-100 md:border-x md:border-gray-200'
+        }`}
+      >
+        <div className={`text-6xl md:text-7xl font-bold tracking-tighter ${
+          isDark
+            ? 'text-white'
+            : 'text-gray-900'
+        }`}>{metric2.displayValue}</div>
+        <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Kapasitas Pemain (Kidzania)</p>
+      </div>
+      <div
+        ref={metric3.elementRef}
+        className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
+          isDark
+            ? 'hover:bg-white/[0.02]'
+            : 'hover:bg-gray-100'
+        }`}
+      >
+        <div className={`text-6xl md:text-7xl font-bold tracking-tighter ${
+          isDark
+            ? 'text-white'
+            : 'text-gray-900'
+        }`}>{metric3.displayValue}</div>
+        <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Peningkatan Peserta (Ruang Ngaji)</p>
+      </div>
     </div>
   );
 }
