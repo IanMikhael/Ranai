@@ -459,9 +459,9 @@ export default function Home() {
 
 // Animated Metric Counter Component
 function MetricCounter({ isDark }) {
-  const metric1 = useCountUp(60, 2000, '%');
-  const metric2 = useCountUp(2, 2000, 'x');
-  const metric3 = useCountUp(5, 2000, 'x');
+  const { elementRef: ref1, displayValue: value1 } = useCountUp(60, 2000, '%');
+  const { elementRef: ref2, displayValue: value2 } = useCountUp(2, 2000, 'x');
+  const { elementRef: ref3, displayValue: value3 } = useCountUp(5, 2000, 'x');
 
   return (
     <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 text-center py-16 ${
@@ -470,7 +470,7 @@ function MetricCounter({ isDark }) {
         : 'border-t border-b border-gray-200'
     }`}>
       <div
-        ref={metric1.elementRef}
+        ref={ref1}
         className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
           isDark
             ? 'hover:bg-white/[0.02]'
@@ -481,11 +481,11 @@ function MetricCounter({ isDark }) {
           isDark
             ? 'text-white'
             : 'text-gray-900'
-        }`}>{metric1.displayValue}</div>
+        }`}>{value1}</div>
         <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Kecepatan Registrasi (MS Glow)</p>
       </div>
       <div
-        ref={metric2.elementRef}
+        ref={ref2}
         className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
           isDark
             ? 'hover:bg-white/[0.02] md:border-x md:border-white/10'
@@ -496,11 +496,11 @@ function MetricCounter({ isDark }) {
           isDark
             ? 'text-white'
             : 'text-gray-900'
-        }`}>{metric2.displayValue}</div>
+        }`}>{value2}</div>
         <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Kapasitas Pemain (Kidzania)</p>
       </div>
       <div
-        ref={metric3.elementRef}
+        ref={ref3}
         className={`space-y-2 p-4 rounded-2xl transition-colors duration-300 ${
           isDark
             ? 'hover:bg-white/[0.02]'
@@ -511,7 +511,7 @@ function MetricCounter({ isDark }) {
           isDark
             ? 'text-white'
             : 'text-gray-900'
-        }`}>{metric3.displayValue}</div>
+        }`}>{value3}</div>
         <p className={`uppercase tracking-widest text-xs ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Peningkatan Peserta (Ruang Ngaji)</p>
       </div>
     </div>
