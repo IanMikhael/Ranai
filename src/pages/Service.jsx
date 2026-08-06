@@ -165,18 +165,8 @@ export default function Service() {
                     {tab.title}
                   </h3>
                   <p className={`text-lg leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                    {tab.desc}
+                    {tab.description}
                   </p>
-                  <ul className="space-y-4 pt-4">
-                    {['Data real-time tanpa delay', 'Akses multi-device & multi-cabang', 'Otomatisasi laporan harian'].map((feat) => (
-                      <li key={feat} className={`flex items-center gap-3 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                        <span className="w-6 h-6 rounded-full bg-[#00dce5]/10 flex items-center justify-center flex-shrink-0">
-                          <svg className="w-3 h-3 text-[#00dce5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
-                        </span>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               )
             ))}

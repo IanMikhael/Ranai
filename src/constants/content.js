@@ -120,7 +120,7 @@ export const USAGE_SECTION = {
       id: 'sync',
       label: 'Sinkronisasi',
       title: 'Koordinasi Lancar',
-      description: 'Sinkronkan operasional antara toko, gudang, dan kanal penjualan dalam satu sistem terpusat. Informasi selalu tersinkronisasi untuk mencegah duplikasi dan kekeliruan data.',
+      description: 'Sinkronkan operasional antara toko, gudang, dan kanal penjualan dalam satu sistem terpusat. Informasi mengalir secara konsisten sehingga mengurangi miskomunikasi, mencegah duplikasi pekerjaan, dan memastikan distribusi berjalan lebih efisien.',
       image: '/assets/koordinasi.png',
       features: [
         'Data real-time tanpa delay',
@@ -132,7 +132,7 @@ export const USAGE_SECTION = {
       id: 'analysis',
       label: 'Analisis',
       title: 'Berbasis Data',
-      description: 'Gunakan data penjualan dan perilaku pelanggan yang terintegrasi untuk memahami permintaan pasar. Dengan wawasan mendalam, buat keputusan bisnis yang lebih cepat dan akurat.',
+      description: 'Gunakan data penjualan dan perilaku pelanggan yang terintegrasi untuk memahami permintaan pasar. Dengan data yang konsisten, keputusan dapat diambil lebih tepat, mulai dari pengelolaan stok hingga strategi penjualan.',
       image: '/assets/data.png',
       features: [
         'Data real-time tanpa delay',

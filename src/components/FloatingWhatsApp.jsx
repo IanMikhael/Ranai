@@ -24,7 +24,7 @@ export default function FloatingWhatsApp() {
       }}
     >
       <img src="/assets/logo whatshap.png" alt="WhatsApp" className="w-7 h-7" />
-      <span className="text-sm font-semibold">Tanya Ranai !</span>
+      <span className="text-sm font-semibold">Tanya Ranaix !</span>
 
       <style>{`
         @keyframes float-sway {
