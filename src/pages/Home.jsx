@@ -318,62 +318,74 @@ export default function Home() {
   </div>
 </section>
 
-{/* ==================== SOLUSI TEKNOLOGI (Enterprise Grade) ==================== */}
+{/* ==================== SOLUSI TEKNOLOGI (MODERN GLASS BENTO) ==================== */}
 <section className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 py-32 md:py-40">
   
+  {/* Ambient Glow di belakang grid */}
+  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] blur-[120px] rounded-full pointer-events-none -z-10 transition-opacity duration-700 ${
+    isDark ? 'bg-gradient-to-br from-[#00dce5]/10 to-[#D4AF37]/10' : 'bg-transparent'
+  }`}></div>
+
   {/* Header: Clean, Left-Aligned, Asymmetric */}
-  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-20 md:mb-24">
+  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-16 md:mb-24 relative z-10">
     <div className="md:col-span-7">
-      <div className={`flex items-center gap-3 mb-6 transition-colors duration-500 ${isDark ? 'text-tosca' : 'text-primary'}`}>
-        <span className="h-px w-8 bg-current"></span>
+      
+      {/* Modern Badge */}
+      <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border mb-6 shadow-sm transition-colors duration-500 ${
+        isDark ? 'bg-tosca/10 border-tosca/20 text-tosca' : 'bg-blue-50 border-blue-200 text-primary'
+      }`}>
+        <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse"></span>
         <span className="text-xs font-bold tracking-[0.2em] uppercase font-label-sm">Sistem & Skala</span>
       </div>
+      
       <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] font-headline-md transition-colors duration-500 ${
         isDark ? 'text-white' : 'text-gray-900'
       }`}>
         Fondasi digital<br/>
         untuk skala{" "}
-        <span className={`italic font-normal transition-colors duration-500 ${isDark ? 'text-gold-light' : 'text-primary'}`}>
+        <span className={`italic font-normal transition-colors duration-500 ${isDark ? 'text-[#D4AF37]' : 'text-primary'}`}>
           global.
         </span>
       </h2>
     </div>
-    <div className="md:col-span-5 flex items-end">
-      <p className={`text-base md:text-lg leading-relaxed transition-colors duration-500 font-body-md ${
-        isDark ? 'text-gray-400' : 'text-gray-600'
+    
+    <div className="md:col-span-5 flex items-end pb-4">
+      <p className={`text-base md:text-lg leading-relaxed transition-colors duration-500 font-body-md border-l-2 pl-6 ${
+        isDark ? 'text-gray-400 border-white/20' : 'text-gray-600 border-gray-300'
       }`}>
         Infrastruktur teknologi yang dirancang presisi untuk mengakselerasi pertumbuhan bisnis tanpa kompromi.
       </p>
     </div>
   </div>
 
-{/* Bento Grid: 7/5 Split Structure */}
-  <div className={`grid grid-cols-1 md:grid-cols-12 gap-px overflow-hidden rounded-2xl border transition-colors duration-500 ${
-    isDark ? 'bg-white/[0.06] border-white/[0.06]' : 'bg-gray-200 border-gray-200'
-  }`}>
+  {/* Bento Grid: 7/5 Split Structure (Floating Glass Cards) */}
+  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 relative z-10">
     
     {/* Kartu 1: Integrasi Sistem (Span 7) */}
-    <div className={`group relative md:col-span-7 p-10 md:p-12 transition-colors duration-300 ${
-      isDark ? 'bg-charcoal hover:bg-charcoal-dark' : 'bg-white hover:bg-gray-50'
+    <div className={`group relative md:col-span-7 p-8 md:p-12 rounded-[2.5rem] overflow-hidden border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,220,229,0.15)] ${
+      isDark ? 'bg-[#111111]/80 border-white/10 hover:border-[#00dce5]/50' : 'bg-white border-gray-200 hover:border-[#00dce5]/50 hover:shadow-xl'
     }`}>
+      {/* Subtle Hover Glow */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#00dce5]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-3xl -z-10"></div>
+      
       <div className="flex flex-col h-full justify-between min-h-[280px]">
         <div className="flex justify-between items-start">
-          <div className={`w-12 h-12 flex items-center justify-center rounded-lg transition-colors duration-300 ${
-            isDark ? 'bg-tosca/10 text-tosca' : 'bg-primary/10 text-primary'
+          <div className={`w-14 h-14 flex items-center justify-center rounded-2xl border transition-all duration-500 group-hover:scale-110 ${
+            isDark ? 'bg-tosca/10 border-tosca/20 text-tosca shadow-[0_0_15px_rgba(0,220,229,0.2)]' : 'bg-blue-50 border-blue-200 text-primary'
           }`}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
           </div>
-          <span className={`text-xs font-mono tracking-wider transition-colors duration-300 ${
-            isDark ? 'text-gray-600' : 'text-gray-400'
+          <span className={`text-sm font-mono tracking-widest font-semibold transition-colors duration-300 ${
+            isDark ? 'text-gray-600 group-hover:text-tosca' : 'text-gray-400 group-hover:text-primary'
           }`}>01 / 04</span>
         </div>
         
         <div className="mt-12">
-          <h3 className={`text-2xl font-semibold mb-3 font-headline-md transition-colors duration-300 ${
+          <h3 className={`text-2xl md:text-3xl font-bold mb-4 font-headline-md transition-colors duration-300 ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>Integrasi Sistem Bisnis</h3>
-          <p className={`text-sm md:text-base max-w-md transition-colors duration-300 font-body-md ${
-            isDark ? 'text-gray-400' : 'text-gray-500'
+          <p className={`text-base max-w-md transition-colors duration-300 font-body-md ${
+            isDark ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-500'
           }`}>
             Penghubung sistem yang mulus untuk aliran data real-time antar platform tanpa hambatan operasional.
           </p>
@@ -382,27 +394,30 @@ export default function Home() {
     </div>
 
     {/* Kartu 2: Pengembangan (Span 5) */}
-    <div className={`group relative md:col-span-5 p-10 md:p-12 transition-colors duration-300 ${
-      isDark ? 'bg-charcoal hover:bg-charcoal-dark' : 'bg-white hover:bg-gray-50'
+    <div className={`group relative md:col-span-5 p-8 md:p-12 rounded-[2.5rem] overflow-hidden border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(212,175,55,0.15)] ${
+      isDark ? 'bg-white/[0.03] border-white/10 hover:border-[#D4AF37]/50' : 'bg-gray-50 border-gray-200 hover:border-[#D4AF37]/50 hover:shadow-xl'
     }`}>
+      {/* Subtle Hover Glow */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-3xl -z-10"></div>
+
       <div className="flex flex-col h-full justify-between min-h-[280px]">
         <div className="flex justify-between items-start">
-          <div className={`w-12 h-12 flex items-center justify-center rounded-lg transition-colors duration-300 ${
-            isDark ? 'bg-gold/10 text-gold' : 'bg-yellow-100 text-yellow-700'
+          <div className={`w-14 h-14 flex items-center justify-center rounded-2xl border transition-all duration-500 group-hover:scale-110 ${
+            isDark ? 'bg-gold/10 border-gold/20 text-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.2)]' : 'bg-yellow-50 border-yellow-200 text-yellow-700'
           }`}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
           </div>
-          <span className={`text-xs font-mono tracking-wider transition-colors duration-300 ${
-            isDark ? 'text-gray-600' : 'text-gray-400'
+          <span className={`text-sm font-mono tracking-widest font-semibold transition-colors duration-300 ${
+            isDark ? 'text-gray-600 group-hover:text-[#D4AF37]' : 'text-gray-400 group-hover:text-yellow-600'
           }`}>02 / 04</span>
         </div>
         
         <div className="mt-12">
-          <h3 className={`text-2xl font-semibold mb-3 font-headline-md transition-colors duration-300 ${
+          <h3 className={`text-2xl md:text-3xl font-bold mb-4 font-headline-md transition-colors duration-300 ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>Pengembangan Kustom</h3>
-          <p className={`text-sm md:text-base max-w-md transition-colors duration-300 font-body-md ${
-            isDark ? 'text-gray-400' : 'text-gray-500'
+          <p className={`text-base max-w-sm transition-colors duration-300 font-body-md ${
+            isDark ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-500'
           }`}>
             Arsitektur sistem yang dirancang khusus, presisi, dan scalable sesuai kebutuhan bisnis Anda.
           </p>
@@ -411,27 +426,30 @@ export default function Home() {
     </div>
 
     {/* Kartu 3: Otomatisasi (Span 5) */}
-    <div className={`group relative md:col-span-5 p-10 md:p-12 transition-colors duration-300 ${
-      isDark ? 'bg-charcoal hover:bg-charcoal-dark' : 'bg-white hover:bg-gray-50'
+    <div className={`group relative md:col-span-5 p-8 md:p-12 rounded-[2.5rem] overflow-hidden border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(255,255,255,0.1)] ${
+      isDark ? 'bg-white/[0.03] border-white/10 hover:border-white/40' : 'bg-gray-50 border-gray-200 hover:border-gray-400 hover:shadow-xl'
     }`}>
+      {/* Subtle Hover Glow */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-3xl -z-10"></div>
+
       <div className="flex flex-col h-full justify-between min-h-[280px]">
         <div className="flex justify-between items-start">
-          <div className={`w-12 h-12 flex items-center justify-center rounded-lg transition-colors duration-300 ${
-            isDark ? 'bg-white/10 text-white' : 'bg-gray-100 text-gray-700'
+          <div className={`w-14 h-14 flex items-center justify-center rounded-2xl border transition-all duration-500 group-hover:scale-110 ${
+            isDark ? 'bg-white/10 border-white/20 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)]' : 'bg-gray-100 border-gray-300 text-gray-700'
           }`}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
           </div>
-          <span className={`text-xs font-mono tracking-wider transition-colors duration-300 ${
-            isDark ? 'text-gray-600' : 'text-gray-400'
+          <span className={`text-sm font-mono tracking-widest font-semibold transition-colors duration-300 ${
+            isDark ? 'text-gray-600 group-hover:text-white' : 'text-gray-400 group-hover:text-gray-900'
           }`}>03 / 04</span>
         </div>
         
         <div className="mt-12">
-          <h3 className={`text-2xl font-semibold mb-3 font-headline-md transition-colors duration-300 ${
+          <h3 className={`text-2xl md:text-3xl font-bold mb-4 font-headline-md transition-colors duration-300 ${
             isDark ? 'text-white' : 'text-gray-900'
           }`}>Otomatisasi Operasional</h3>
-          <p className={`text-sm md:text-base max-w-md transition-colors duration-300 font-body-md ${
-            isDark ? 'text-gray-400' : 'text-gray-500'
+          <p className={`text-base max-w-sm transition-colors duration-300 font-body-md ${
+            isDark ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-500'
           }`}>
             Otomatisasi proses rutin untuk memangkas waktu kerja, mengurangi error, dan meningkatkan efisiensi.
           </p>
@@ -440,36 +458,37 @@ export default function Home() {
     </div>
 
     {/* Kartu 4: Teknologi Interaktif (Span 7) - Feature Highlight */}
-    <div className={`group relative md:col-span-7 p-10 md:p-12 overflow-hidden transition-colors duration-300 ${
-      isDark ? 'bg-charcoal-dark hover:bg-charcoal' : 'bg-gray-50 hover:bg-gray-100'
+    <div className={`group relative md:col-span-7 p-8 md:p-12 rounded-[2.5rem] overflow-hidden border backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(212,175,55,0.15)] ${
+      isDark ? 'bg-[#111111]/80 border-white/10 hover:border-[#D4AF37]/50' : 'bg-white border-gray-200 hover:border-[#D4AF37]/50 hover:shadow-xl'
     }`}>
-      {/* Subtle Background Pattern / Glow */}
-      <div className={`absolute top-0 right-0 w-1/2 h-full opacity-50 pointer-events-none transition-opacity duration-500 group-hover:opacity-100 ${
+      
+      {/* Premium Cinematic Glow */}
+      <div className={`absolute top-0 right-0 w-[120%] h-full opacity-30 pointer-events-none transition-opacity duration-700 group-hover:opacity-100 -z-10 ${
         isDark 
-          ? 'bg-[radial-gradient(circle_at_top_right,_rgba(212,175,55,0.15),_transparent_60%)]' 
-          : 'bg-[radial-gradient(circle_at_top_right,_rgba(0,220,229,0.1),_transparent_60%)]'
+          ? 'bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,55,0.25),_transparent_60%)]' 
+          : 'bg-[radial-gradient(ellipse_at_top_right,_rgba(212,175,55,0.15),_transparent_60%)]'
       }`}></div>
 
       <div className="relative z-10 flex flex-col h-full justify-between min-h-[280px]">
         <div className="flex justify-between items-start">
-          <div className={`w-12 h-12 flex items-center justify-center rounded-lg transition-colors duration-300 ${
-            isDark ? 'bg-gold/15 text-gold-light' : 'bg-primary/10 text-primary'
+          <div className={`w-14 h-14 flex items-center justify-center rounded-2xl border transition-all duration-500 group-hover:scale-110 ${
+            isDark ? 'bg-gold/10 border-gold/20 text-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.3)]' : 'bg-yellow-50 border-yellow-200 text-yellow-600'
           }`}>
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
           </div>
-          <span className={`text-xs font-mono tracking-wider transition-colors duration-300 ${
-            isDark ? 'text-gold/50' : 'text-primary/50'
+          <span className={`text-sm font-mono tracking-widest font-semibold transition-colors duration-300 ${
+            isDark ? 'text-gray-600 group-hover:text-[#D4AF37]' : 'text-gray-400 group-hover:text-yellow-600'
           }`}>04 / 04</span>
         </div>
         
         <div className="mt-12">
-          <div className="flex items-center gap-2 mb-3">
-            <h3 className={`text-2xl md:text-3xl font-semibold font-headline-md transition-colors duration-300 ${
-              isDark ? 'text-gold-light' : 'text-gray-900'
+          <div className="flex items-center gap-2 mb-4">
+            <h3 className={`text-2xl md:text-3xl font-bold font-headline-md transition-colors duration-300 ${
+              isDark ? 'text-[#D4AF37]' : 'text-gray-900'
             }`}>Teknologi Interaktif (UX)</h3>
           </div>
-          <p className={`text-sm md:text-base max-w-lg transition-colors duration-300 font-body-md ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
+          <p className={`text-base max-w-lg transition-colors duration-300 font-body-md ${
+            isDark ? 'text-gray-400 group-hover:text-gray-300' : 'text-gray-500'
           }`}>
             Mengubah pengalaman pengguna menjadi lebih cerdas dan intuitif. Fokus pada mikro-interaksi yang menciptakan kesan premium di setiap sentuhan layar.
           </p>
